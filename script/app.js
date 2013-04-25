@@ -110,7 +110,10 @@ $(document).ready(function() {
 
 	$('.email').click(function() {
 		// $('.hide').hide();
-		
+		var listItems = [];
+		$("ul li").each(function() { listItems.push($(this).text()) });
+		var sampleRequests = listItems.join(', ');
+		$('#mailto').attr('href', 'mailto:babu@stonecityllc.com?body=' +sampleRequests + '');
 		
 		// console.log("click function is working");
 	})
