@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
 	
 	var inlist = inlist;
 	var inlist2 = inlist2;
@@ -73,14 +75,18 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('.slabs').bind("contextmenu", function(e) {
+	$(document).bind("contextmenu", function(e) {
     	return false;
 	});
+
+
 
 	$('.slabs').mousedown(function(e) {
 		if(e.button == 2) {
 
-			launchWindow('#dialog2');
+			$.modal('<div><h4>' + this.id + '</h4><img src=' + $(this).find('img').attr('src') + '></div>');
+			// $("#basic-modal-content").modal();
+			
 			
 			
 		}
