@@ -59,7 +59,7 @@ $(document).ready(function() {
 		})
 		if (!removed) {
 			length++;
-			console.log(length);
+			// console.log(length);
 			if (length>1) {
 				$('.printMe').show();
 				$('.email').show();
@@ -109,14 +109,17 @@ $(document).ready(function() {
 		});
 
 	$('.email').click(function() {
+		// $('.hide').hide();
 		
+		
+		// console.log("click function is working");
 	})
 
 
 	
-
+	
          
 
-
+	
 
 });
