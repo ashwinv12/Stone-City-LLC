@@ -10,25 +10,9 @@ $(document).ready(function() {
 	$('.email').hide();
 	$('.info').hide();	
 
-	// $('a').click(function(event) {
-
- //        // The id of the section we want to go to.
- //        var id = $(this).attr("href");
-
- //        // An offset to push the content down from the top.
- //        var offset = 150;
-
- //        // Our scroll target : the top position of the
- //        // section that has the id referenced by our href.
- //        var target = $(id).offset().top - offset;
-
- //        // The magic...smooth scrollin' goodness.
- //        $('html, body').animate({scrollTop:target}, 500);
-
- //        //prevent the page from jumping down to our section.
- //        event.preventDefault();
- //    });
-
+	
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	$('.slabs').click(function(e) {
 		e.preventDefault();
 		inlist = !inlist;
@@ -88,8 +72,28 @@ $(document).ready(function() {
 			
 		}
 	});
-
 	
+	$('.slabs').bind("contextmenu", function(e) {
+    	return false;
+	});
+
+	$('.slabs').mousedown(function(e) {
+		if(e.button == 2) {
+
+			launchWindow('#dialog2');
+			
+			
+		}
+	});
+
+	$(document).click(function(e) {
+		if(e.button == 0) {
+			$('#rightClickMenu').fadeOut(80);
+		}
+		
+	});
+	
+
 	$('.printMe').click(function() {
 		numclicks++;
 			

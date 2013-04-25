@@ -8,6 +8,17 @@ body
     /*text-shadow: 1px 1px 0px black;*/
 
 }
+#rightClickMenu {
+    background-color: #CDCDCD;
+    border: 2px solid #6A6A6A;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #474747;
+    width: 130px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: none;
+    position: absolute;
+}
 .testing {
     margin-top: 120px;
 }
@@ -29,15 +40,22 @@ h1
 h2 
 {
     font-size: 20px;
-    }
-
+}
+h3 {
+    clear: both;
+    font-weight: bold;
+    position: absolute;
+    left: 33%;
+    top: 20%;
+    color: steelblue;
+}
     .test
     {
         font-size: 40px;
         color: red;
     }
     .slabs {
-        clear: both;
+        /*clear: both;*/
         border: 5px solid black;
         width: 14.8%;
         height: 150px;
