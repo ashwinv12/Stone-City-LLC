@@ -83,9 +83,10 @@ $(document).ready(function() {
 
 	$('.slabs').mousedown(function(e) {
 		if(e.button == 2) {
-
-			$.modal('<div><h4>' + this.id + '</h4><img src=' + $(this).find('img').attr('src') + '></div>');
-			// $("#basic-modal-content").modal();
+			var price = $(this).attr('price');
+			console.log(price);
+			$.modal('<div><h4 align="center">' + this.id + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + $(this).find('img').attr('src') + '></div>');
+			
 			
 			
 			
