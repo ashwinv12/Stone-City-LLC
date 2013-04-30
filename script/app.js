@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var inlist = inlist;
 	var inlist2 = inlist2;
 	var numclicks = 0;
-	
+	var moreinfo = false;
 	var length = $('#slablist ul').length;
 	console.log(length);
 	$('.printMe').hide();
@@ -13,6 +13,28 @@ $(document).ready(function() {
 	$('.info').hide();	
 
 	
+	$('.slabs').mouseenter(function() {
+		$(this).find('.more-info-button').show();
+	});
+
+	$('.slabs').mouseleave(function() {
+		$(this).find('.more-info-button').hide();
+	});
+
+	$('.more-info-button').click(function(e) {
+			moreinfo = true;
+			var $slab = $(this).parents('.slabs').first();
+			console.log($slab);
+			var name = $slab.attr("id");
+			var price = $slab.attr("price");
+			var image = $slab.find('img').attr('src')
+			$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + image + '></div>');
+			
+			
+			
+			
+		
+	});
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	$('.slabs').click(function(e) {
@@ -81,28 +103,7 @@ $(document).ready(function() {
 
 	
 
-	$('.slabs').mouseenter(function() {
-		$(this).find('.more-info-button').show();
-	});
-
-	$('.slabs').mouseleave(function() {
-		$(this).find('.more-info-button').hide();
-	});
-
-	$('.more-info-button').click(function(e) {
-		
-			var $slab = $(this).parents('.slabs').first();
-			console.log($slab);
-			var name = $slab.attr("id");
-			var price = $slab.attr("price");
-			var image = $slab.find('img').attr('src')
-			$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + image + '></div>');
-			
-			
-			
-			
-		
-	});
+	
 
 	$(document).click(function(e) {
 		if(e.button == 0) {
