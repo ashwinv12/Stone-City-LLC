@@ -200,6 +200,13 @@ a {
     padding: 1%;
     font-size: 25px;
 }
+.more-info-button {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 1%;
+    font-size: 25px;
+}
 .button1 {
     /*position: fixed;*/
     margin-top: 10px;
@@ -207,6 +214,7 @@ a {
     padding: 1%;
     font-size: 25px;
 }
+
 .footer
 {
     position: absolute;
@@ -246,6 +254,7 @@ a {
     font-size: 100%;
     line-height: 0em;
 }
+
 .caption {
     display: none;
     position: absolute;

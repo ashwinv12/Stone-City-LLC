@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-
-	
+	// $.modal('<div><h4 align="center">How to Use Site</h4><br><p align="left">Right click on slab image for info</p><br><p>Left click on slab image to add it to your slab request list</p><br><p>Click on the list item to navigate to the slab image</p><br><br><br><br><p>Click on the "x" in the upper right corner to begin</p></div>');
+	$('.more-info-button').hide();
 	var inlist = inlist;
 	var inlist2 = inlist2;
 	var numclicks = 0;
@@ -79,18 +79,29 @@ $(document).ready(function() {
     	return false;
 	});
 
+	
 
+	$('.slabs').mouseenter(function() {
+		$(this).find('.more-info-button').show();
+	});
 
-	$('.slabs').mousedown(function(e) {
-		if(e.button == 2) {
-			var price = $(this).attr('price');
-			console.log(price);
-			$.modal('<div><h4 align="center">' + this.id + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + $(this).find('img').attr('src') + '></div>');
+	$('.slabs').mouseleave(function() {
+		$(this).find('.more-info-button').hide();
+	});
+
+	$('.more-info-button').click(function(e) {
+		
+			var $slab = $(this).parents('.slabs').first();
+			console.log($slab);
+			var name = $slab.attr("id");
+			var price = $slab.attr("price");
+			var image = $slab.find('img').attr('src')
+			$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + image + '></div>');
 			
 			
 			
 			
-		}
+		
 	});
 
 	$(document).click(function(e) {
