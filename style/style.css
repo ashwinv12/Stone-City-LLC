@@ -94,6 +94,7 @@ h3 {
         -webkit-filter: grayscale(50%);
         /*padding: 10px;*/
     }
+    
     .red
     {
         border: 5px solid red;
@@ -207,6 +208,7 @@ a {
     padding: 1%;
     font-size: 25px;
 }
+
 .button1 {
     /*position: fixed;*/
     margin-top: 10px;

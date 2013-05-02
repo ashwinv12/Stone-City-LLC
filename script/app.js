@@ -21,13 +21,20 @@ $(document).ready(function() {
 		$(this).find('.more-info-button').hide();
 	});
 
+	
+	
+
 	$('.more-info-button').click(function(e) {
+			e.preventDefault();
+			var nextInfo = $(this).prev('.slabs');
+			var id = nextInfo.attr("id");
+			console.log(id);
 			moreinfo = true;
 			var $slab = $(this).parents('.slabs').first();
-			console.log($slab);
+			// console.log($slab);
 			var name = $slab.attr("id");
 			var price = $slab.attr("price");
-			var image = $slab.find('img').attr('src')
+			var image = $slab.find('img').attr('src');
 			$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + image + '></div>');
 			
 			
@@ -37,16 +44,19 @@ $(document).ready(function() {
 	});
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	$('.slabs').click(function(e) {
+	
+	$('.slabs img').click(function(e) {
 		e.preventDefault();
 		inlist = !inlist;
 		var name = this.id;
 		var that = this;
 		var removed = false;
-		$(this).addClass('reset');
-		$(this).removeClass('red');
+		var parent = $(this).closest("div");
+		console.log("ID of div:" + parent);
+		$(parent).addClass('reset');
+		$(parent).removeClass('red');
 		// $(this).removeClass('.info');
-		$(this).find(('.info')).hide();
+		$(parent).find(('.info')).hide();
 		$('ul#list li').each(function() {
 			// console.log($(this));
 			// console.log("This.id is " + this.class + " : That.id is " + that.id);
@@ -72,9 +82,9 @@ $(document).ready(function() {
 				$('.printMe').show();
 				$('.email').show();
 			}
-			$(this).addClass('red');
-			$(this).removeClass('reset');
-			$(this).find(('.info')).show();
+			$(parent).addClass('red');
+			$(parent).removeClass('reset');
+			$(parent).find(('.info')).show();
 			var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 			// console.log(listitem);
 
@@ -97,9 +107,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(document).bind("contextmenu", function(e) {
-    	return false;
-	});
+	
 
 	
 
