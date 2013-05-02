@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 	
 	$('.more-info-button').hide();
+	$('.more-info-button').addClass('opacity8');
 	var inlist = inlist;
 	var inlist2 = inlist2;
 	var numclicks = 0;
@@ -22,20 +23,24 @@ $(document).ready(function() {
 	});
 
 	$('.more-info-button').mouseenter(function() {
-		$(this).css('opacity', '1');
+		$(this).removeClass('opacity8');
+		$(this).addClass('fullopacity');
 	});
 
 	$('.more-info-button').mouseleave(function() {
-		$(this).css('opacity', '0.8');
+		$(this).removeClass('fullopacity');
+		$(this).addClass('opacity8');
 	});
 
 
 	$('.help').mouseenter(function() {
-		$(this).css('opacity', '0.8');
+		$(this).removeClass('opacity5');
+		$(this).addClass('opacity8');
 	});
 
 	$('.help').mouseleave(function() {
-		$(this).css('opacity', '0.5');
+		$(this).removeClass('opacity8');
+		$(this).addClass('opacity5');
 	});
 
 	$('.help').click(function() {
@@ -144,14 +149,17 @@ $(document).ready(function() {
 		numclicks++;
 			
 				$('.hide').hide();
-				$('a').css('textDecoration','none')
-				$('.standard').css('font-weight','normal');
-				$('.standard').css('color','black');
+				$('a').removeClass('linkwebText');
+				$('standard').removeClass('webText');
+				$('a').addClass('linkprintText');
+				$('.standard').addClass('printText');
+				// $('.standard').addClass('printText');
 				
 				window.print();
-				$('a').css('textDecoration','underline');
-				$('.standard').css('font-weight','bold');
-				$('.standard').css('color','orange');
+				$('a').removeClass('linkprintText');
+				$('standard').removeClass('printText');
+				$('a').addClass('linkwebText');
+				$('.standard').addClass('webText');
 				$('.hide').show();  
 				return false; 
 			

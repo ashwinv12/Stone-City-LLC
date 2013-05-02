@@ -204,6 +204,15 @@ a {
 {
     position: fixed;
 }
+.opacity8 {
+    opacity: 0.8;
+}
+.fullopacity {
+    opacity: 1;
+}
+.opacity5 {
+    opacity: 0.5;
+}
 .button {
     /*position: fixed;*/
     margin-top: 20px;
@@ -217,10 +226,23 @@ a {
     position: absolute;
     top: 0px;
     left: 0px;
-    opacity: 0.8;
-    
+    /*opacity: 0.8;*/
 }
-
+.linkprintText {
+    text-decoration: none;
+}
+.linkwebText {
+    text-decoration: underline;
+}
+.printText {
+    
+    font-weight: normal;
+    color: black;  
+}
+.webText {
+    font-weight: bold;
+    color: orange;
+}
 .button1 {
     /*position: fixed;*/
     margin-top: 10px;
