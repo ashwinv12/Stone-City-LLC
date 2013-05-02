@@ -73,6 +73,16 @@ h3 {
     top: 20%;
     color: steelblue;
 }
+h5 {
+    font-weight: bold;
+    font-size: 35px;
+    position: absolute;
+    left: 93%;
+    top: 7%;
+    color: red;
+    cursor: pointer;
+    opacity: 0.5;
+}
     .test
     {
         font-size: 40px;
@@ -202,11 +212,12 @@ a {
     font-size: 25px;
 }
 .more-info-button {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     position: absolute;
     top: 0px;
     left: 0px;
+    opacity: 0.8;
     
 }
 

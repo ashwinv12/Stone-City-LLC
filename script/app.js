@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	// $.modal('<div><h4 align="center">How to Use Site</h4><br><p align="left">Right click on slab image for info</p><br><p>Left click on slab image to add it to your slab request list</p><br><p>Click on the list item to navigate to the slab image</p><br><br><br><br><p>Click on the "x" in the upper right corner to begin</p></div>');
+	
 	$('.more-info-button').hide();
 	var inlist = inlist;
 	var inlist2 = inlist2;
@@ -21,26 +21,45 @@ $(document).ready(function() {
 		$(this).find('.more-info-button').hide();
 	});
 
-	
-	
+	$('.more-info-button').mouseenter(function() {
+		$(this).css('opacity', '1');
+	});
+
+	$('.more-info-button').mouseleave(function() {
+		$(this).css('opacity', '0.8');
+	});
+
+
+	$('.help').mouseenter(function() {
+		$(this).css('opacity', '0.8');
+	});
+
+	$('.help').mouseleave(function() {
+		$(this).css('opacity', '0.5');
+	});
+
+	$('.help').click(function() {
+		$.modal('<div><h4 align="center">Help</h4><br><p align="left">Click on the "i" icon for information '
+			+ 'on the slab</p><br><p>Click on slab image to add it to your slab request list</p><br>'
+			+ '<p>Click on the list item to navigate to the slab image</p><br><p>When you are finished, you'
+			+ ' can print or email your list</p></div>');
+	});
 
 	$('.more-info-button').click(function(e) {
-			e.preventDefault();
-			var nextInfo = $(this).prev('.slabs');
-			var id = nextInfo.attr("id");
-			console.log(id);
-			moreinfo = true;
-			var $slab = $(this).parents('.slabs').first();
-			// console.log($slab);
-			var name = $slab.attr("id");
-			var price = $slab.attr("price");
-			var image = $slab.find('img').attr('src');
-			$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br><img src=' + image + '></div>');
+		e.preventDefault();
+		var nextInfo = $(this).prev('.slabs');
+		var id = nextInfo.attr("id");
+		console.log(id);
+		moreinfo = true;
+		var $slab = $(this).parents('.slabs').first();
+		// console.log($slab);
+		var name = $slab.attr("id");
+		var price = $slab.attr("price");
+		var image = $slab.find('img').attr('src');
+		$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br>'
+			+'<img src=' + image + '></div>');
 			
 			
-			
-			
-		
 	});
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
