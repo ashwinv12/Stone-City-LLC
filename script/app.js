@@ -45,7 +45,7 @@ $(document).ready(function() {
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	$('.slabs img').click(function(e) {
+	$('.slabs img.slab').click(function(e) {
 		e.preventDefault();
 		inlist = !inlist;
 		var name = this.id;

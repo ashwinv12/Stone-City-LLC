@@ -202,11 +202,12 @@ a {
     font-size: 25px;
 }
 .more-info-button {
+    width: 25px;
+    height: 25px;
     position: absolute;
-    top: -1px;
-    left: -1px;
-    padding: .01%;
-    font-size: 20px;
+    top: 0px;
+    left: 0px;
+    
 }
 
 .button1 {
