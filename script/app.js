@@ -7,6 +7,7 @@ $(document).ready(function() {
 	var inlist2 = inlist2;
 	var numclicks = 0;
 	var moreinfo = false;
+	
 	var length = $('#slablist ul').length;
 	console.log(length);
 	$('.printMe').hide();
@@ -52,20 +53,80 @@ $(document).ready(function() {
 
 	$('.more-info-button').click(function(e) {
 		e.preventDefault();
-		var nextInfo = $(this).prev('.slabs');
-		var id = nextInfo.attr("id");
-		console.log(id);
-		moreinfo = true;
 		var $slab = $(this).parents('.slabs').first();
-		// console.log($slab);
 		var name = $slab.attr("id");
 		var price = $slab.attr("price");
 		var image = $slab.find('img').attr('src');
+		
+		
 		$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br>'
-			+'<img src=' + image + '></div>');
+			+'<img class="modalImage" title="Add or Remove from List" src=' + image + '><br><br></div>');
+			
+		$('.modalImage').click(function() {
+			
+			console.log("slab:" + $slab.attr("id"));
+			var that = $slab;
+			var removed = false;
+			$($slab).addClass('reset');
+		$($slab).removeClass('red');
+		// $($slab).removeClass('.info');
+		$($slab).find(('.info')).hide();
+		$('ul#list li').each(function() {
+			// console.log($($slab));
+			// console.log("$slab.id is " + $slab.class + " : That.id is " + that.id);
+			console.log(this);
+			if ($(this).hasClass(that.attr("id"))) {
+				
+				$(this).remove();
+				removed = true;
+				
+
+				length--;
+				// console.log(length);
+				if (length==1) {
+					$('.printMe').hide();
+					$('.email').hide();
+				}
+			}
+
+		});
+		if (!removed) {
+			length++;
+			// console.log(length);
+			if (length>1) {
+				$('.printMe').show();
+				$('.email').show();
+			}
+			$($slab).addClass('red');
+			$($slab).removeClass('reset');
+			$($slab).find(('.info')).show();
 			
 			
+			var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
+			// console.log(listitem);
+
+			// $(listitem).addClass("smoothScroll");
+			$(listitem).appendTo('#slablist ul').click(function() {
+				
+				var id = '#'+name+'';
+			// console.log(id);
+			// An offset to push the content down from the top.
+        var offset = 20;
+
+        // Our scroll target : the top position of the
+        // section that has the id referenced by our href.
+        var target = $(id).offset().top-offset;
+
+        // The magic...smooth scrollin' goodness.
+        $('html, body').animate({scrollTop: target}, 1500);
+			});
+			
+		}
+		
+		});
 	});
+
+
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -86,9 +147,10 @@ $(document).ready(function() {
 			// console.log("This.id is " + this.class + " : That.id is " + that.id);
 
 			if ($(this).hasClass(that.id)) {
-				
+				// console.log(this);
 				$(this).remove();
 				removed = true;
+				
 
 				length--;
 				console.log(length);
@@ -98,7 +160,7 @@ $(document).ready(function() {
 				}
 			}
 
-		})
+		});
 		if (!removed) {
 			length++;
 			// console.log(length);
@@ -109,6 +171,8 @@ $(document).ready(function() {
 			$(parent).addClass('red');
 			$(parent).removeClass('reset');
 			$(parent).find(('.info')).show();
+			
+			
 			var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 			// console.log(listitem);
 

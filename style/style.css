@@ -228,6 +228,9 @@ a {
     left: 0px;
     /*opacity: 0.8;*/
 }
+.modalImage {
+    cursor: pointer;
+}
 .linkprintText {
     text-decoration: none;
 }
