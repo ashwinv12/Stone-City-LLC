@@ -43,14 +43,32 @@ img {border:0;}
     display: none;
     position: absolute;
 }
-.testing {
-    margin-top: 120px;
-}
 
-.navigation {
+
+.price {
     position: absolute;
     top: 100px;
-    left: 100px;
+    right: 50px;
+    color: orange;
+}
+.thickness {
+    position: absolute;
+    top: 130px;
+    right: 50px;
+    color: orange;
+}
+.avail {
+    position: absolute;
+    top: 160px;
+    right: 50px;
+    color: orange;
+}
+
+.listhelp {
+    position: absolute;
+    top: 260px;
+    left: 20px;
+    color: lightgreen;
 }
 h1
 {
@@ -219,6 +237,7 @@ a {
     margin-left: 120px;
     padding: 1%;
     font-size: 25px;
+    cursor: pointer;
 }
 .more-info-button {
     width: 30px;
@@ -230,6 +249,8 @@ a {
 }
 .modalImage {
     cursor: pointer;
+    position: absolute;
+    top: 100px;
 }
 .linkprintText {
     text-decoration: none;
@@ -252,6 +273,7 @@ a {
     margin-left: 120px;
     padding: 1%;
     font-size: 25px;
+    cursor: pointer;
 }
 
 .footer

@@ -56,23 +56,30 @@ $(document).ready(function() {
 		var $slab = $(this).parents('.slabs').first();
 		var name = $slab.attr("id");
 		var price = $slab.attr("price");
+		var thickness = $slab.attr("thickness");
+		var avail = $slab.attr("avail");
 		var image = $slab.find('img').attr('src');
 		
+
 		
-		$.modal('<div><h4 align="center">' + name + '</h4><br><p align="left">Price: ' + price + '</p><br><br>'
-			+'<img class="modalImage" title="Add or Remove from List" src=' + image + '><br><br></div>');
+		$.modal('<div><h4 align="center">' + name + '</h4><p class="price">Price: ' + price + '</p>'
+			+'<img class="modalImage" title="Add or Remove from List" src=' + image + '><p class="thickness">'
+			+ 'Thickness: '+thickness+'<p class="avail">Availability: '+avail+'</p> ' 
+			+ '<p class="listhelp">Click on image to add or <br>remove from the list.</p>	</div>');
 			
-		$('.modalImage').click(function() {
+		$('.modalImage').click(function(e) {
 			
 			console.log("slab:" + $slab.attr("id"));
 			var that = $slab;
+
 			var removed = false;
-			$($slab).addClass('reset');
-		$($slab).removeClass('red');
-		// $($slab).removeClass('.info');
-		$($slab).find(('.info')).hide();
+			$slab.addClass('reset');
+			$slab.removeClass('red');
+		// $$slab.removeClass('.info');
+			$slab.find(('.info')).hide();
+
 		$('ul#list li').each(function() {
-			// console.log($($slab));
+			// console.log($$slab);
 			// console.log("$slab.id is " + $slab.class + " : That.id is " + that.id);
 			console.log(this);
 			if ($(this).hasClass(that.attr("id"))) {
@@ -97,9 +104,9 @@ $(document).ready(function() {
 				$('.printMe').show();
 				$('.email').show();
 			}
-			$($slab).addClass('red');
-			$($slab).removeClass('reset');
-			$($slab).find(('.info')).show();
+			$slab.addClass('red');
+			$slab.removeClass('reset');
+			$slab.find(('.info')).show();
 			
 			
 			var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
@@ -173,7 +180,7 @@ $(document).ready(function() {
 			$(parent).find(('.info')).show();
 			
 			
-			var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
+			var listitem = '<li title="Go To '+name+'" class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 			// console.log(listitem);
 
 			// $(listitem).addClass("smoothScroll");
