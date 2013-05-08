@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	
+
 	$('.more-info-button').hide();
 	$('.more-info-button').addClass('opacity8');
 	var inlist = inlist;
@@ -13,7 +14,7 @@ $(document).ready(function() {
 	$('.printMe').hide();
 	$('.email').hide();
 	$('.info').hide();	
-
+	$('.refresh').hide();
 	
 	$('.slabs').mouseenter(function() {
 		$(this).find('.more-info-button').show();
@@ -66,7 +67,7 @@ $(document).ready(function() {
 			+'<img class="modalImage" title="Add or Remove from List" src=' + image + '><p class="thickness">'
 			+ 'Thickness: '+thickness+'<p class="avail">Availability: '+avail+'</p> ' 
 			+ '<p class="listhelp">Click on image to add or <br>remove from the list.</p>	</div>');
-			
+
 		$('.modalImage').click(function(e) {
 			
 			console.log("slab:" + $slab.attr("id"));
@@ -76,7 +77,7 @@ $(document).ready(function() {
 			$slab.addClass('reset');
 			$slab.removeClass('red');
 		// $$slab.removeClass('.info');
-			$slab.find(('.info')).hide();
+		$slab.find(('.info')).hide();
 
 		$('ul#list li').each(function() {
 			// console.log($$slab);
@@ -93,6 +94,7 @@ $(document).ready(function() {
 				if (length==1) {
 					$('.printMe').hide();
 					$('.email').hide();
+					$('.refresh').hide();
 				}
 			}
 
@@ -103,6 +105,7 @@ $(document).ready(function() {
 			if (length>1) {
 				$('.printMe').show();
 				$('.email').show();
+				$('.refresh').show();
 			}
 			$slab.addClass('red');
 			$slab.removeClass('reset');
@@ -118,7 +121,7 @@ $(document).ready(function() {
 				var id = '#'+name+'';
 			// console.log(id);
 			// An offset to push the content down from the top.
-        var offset = 20;
+			var offset = 20;
 
         // Our scroll target : the top position of the
         // section that has the id referenced by our href.
@@ -126,27 +129,25 @@ $(document).ready(function() {
 
         // The magic...smooth scrollin' goodness.
         $('html, body').animate({scrollTop: target}, 1500);
-			});
+    });
 			
 		}
 		
-		});
 	});
+});
 
 
-	
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	$('.slabs img.slab').click(function(e) {
-		e.preventDefault();
-		inlist = !inlist;
-		var name = this.id;
-		var that = this;
-		var removed = false;
-		var parent = $(this).closest("div");
-		console.log("ID of div:" + parent);
-		$(parent).addClass('reset');
-		$(parent).removeClass('red');
+
+$('.slabs img.slab').click(function(e) {
+	e.preventDefault();
+	inlist = !inlist;
+	var name = this.id;
+	var that = this;
+	var removed = false;
+	var parent = $(this).closest("div");
+	console.log("ID of div:" + parent);
+	$(parent).addClass('reset');
+	$(parent).removeClass('red');
 		// $(this).removeClass('.info');
 		$(parent).find(('.info')).hide();
 		$('ul#list li').each(function() {
@@ -164,6 +165,7 @@ $(document).ready(function() {
 				if (length==1) {
 					$('.printMe').hide();
 					$('.email').hide();
+					$('.refresh').hide();
 				}
 			}
 
@@ -174,6 +176,7 @@ $(document).ready(function() {
 			if (length>1) {
 				$('.printMe').show();
 				$('.email').show();
+				$('.refresh').show();
 			}
 			$(parent).addClass('red');
 			$(parent).removeClass('reset');
@@ -189,7 +192,7 @@ $(document).ready(function() {
 				var id = '#'+name+'';
 			// console.log(id);
 			// An offset to push the content down from the top.
-        var offset = 20;
+			var offset = 20;
 
         // Our scroll target : the top position of the
         // section that has the id referenced by our href.
@@ -197,33 +200,33 @@ $(document).ready(function() {
 
         // The magic...smooth scrollin' goodness.
         $('html, body').animate({scrollTop: target}, 1500);
-			});
+    });
 			
 		}
 	});
-	
-	
 
-	
 
-	
 
-	$(document).click(function(e) {
-		if(e.button == 0) {
-			$('#rightClickMenu').fadeOut(80);
-		}
-		
-	});
-	
 
-	$('.printMe').click(function() {
-		numclicks++;
-			
-				$('.hide').hide();
-				$('a').removeClass('linkwebText');
-				$('standard').removeClass('webText');
-				$('a').addClass('linkprintText');
-				$('.standard').addClass('printText');
+
+
+
+$(document).click(function(e) {
+	if(e.button == 0) {
+		$('#rightClickMenu').fadeOut(80);
+	}
+
+});
+
+
+$('.printMe').click(function() {
+	numclicks++;
+
+	$('.hide').hide();
+	$('a').removeClass('linkwebText');
+	$('standard').removeClass('webText');
+	$('a').addClass('linkprintText');
+	$('.standard').addClass('printText');
 				// $('.standard').addClass('printText');
 				
 				window.print();
@@ -233,11 +236,11 @@ $(document).ready(function() {
 				$('.standard').addClass('webText');
 				$('.hide').show();  
 				return false; 
-			
 
-		});
 
-	$('.email').click(function() {
+			});
+
+$('.email').click(function() {
 		// $('.hide').hide();
 		var listItems = [];
 		$("ul li").each(function() { listItems.push($(this).text()) });
@@ -245,13 +248,16 @@ $(document).ready(function() {
 		$('#mailto').attr('href', 'mailto:babu@stonecityllc.com?subject=Slab Requests&body=' +sampleRequests + '');
 		
 		// console.log("click function is working");
-	})
+	});
 
 
-	
-	
-         
+$('.refresh').click(function() {
+		
+		location.reload();
+	});
 
-	
+
+
+
 
 });

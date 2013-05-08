@@ -94,99 +94,99 @@ h3 {
 h5 {
     font-weight: bold;
     font-size: 35px;
-    position: absolute;
+    position: fixed;
     left: 93%;
     top: 7%;
     color: red;
     cursor: pointer;
     opacity: 0.5;
 }
-    .test
-    {
-        font-size: 40px;
-        color: red;
-    }
-    .slabs {
-        /*clear: both;*/
-        border: 5px solid black;
-        width: 14.8%;
-        height: 150px;
-        opacity: .7;
-        position: absolute;
-        /*margin-right: 75px;*/
-        box-shadow: 2px 2px 5px #333333;
-        -webkit-transition: 0.5s Ease;
-        -moz-transition: 0.5s Ease;
-        -o-transition: 0.5s Ease;
-        transition: 0.5s Ease;
-        -webkit-filter: grayscale(50%);
-        /*padding: 10px;*/
-    }
-    
-    .red
-    {
-        border: 5px solid red;
-        opacity: 1;
-    }
-    .reset
-    {
-        border: 5px solid black;
-    }
-    .slab1
-    {
-        top: 225px;
-        left: 30%;
-    }
+.test
+{
+    font-size: 40px;
+    color: red;
+}
+.slabs {
+    /*clear: both;*/
+    border: 5px solid black;
+    width: 14.8%;
+    height: 150px;
+    opacity: .7;
+    position: absolute;
+    /*margin-right: 75px;*/
+    box-shadow: 2px 2px 5px #333333;
+    -webkit-transition: 0.5s Ease;
+    -moz-transition: 0.5s Ease;
+    -o-transition: 0.5s Ease;
+    transition: 0.5s Ease;
+    -webkit-filter: grayscale(50%);
+    /*padding: 10px;*/
+}
 
-    .slab2
-    {   
-        top: 225px;
-        left: 48.5%;   
-    }
-    .slab3
-    {  
-        top: 225px;
-        left: 67%; 
-    }
-    .slab4
-    {
-        top: 450px;
-        left: 30%;
-    }
-    .slab5
-    {
-        top: 450px;
-        left: 48.5%;
-    }
-    .slab6
-    {
-        top: 450px;
-        left: 67%;
-    }
-    .slab7
-    {
-        top: 675px;
-        left: 30%;
-    }
-    .slab8
-    {
-        top: 675px;
-        left: 48.5%;
-    }
-    .slab9
-    {
-        top: 675px;
-        left: 67%;
-    }
-    .slab-info:hover
-    {
-        /*border: 6px solid #660000;*/
-        -webkit-transform: scale(1.1, 1.1);
-        -moz-transform: scale(1.1, 1.1);
-        -o-transform: scale(1.1, 1.1);
-        -ms-transform: scale(1.1, 1.1);
-        transform: scale(1.1, 1.1);
-        opacity: 1;
+.red
+{
+    border: 5px solid red;
+    opacity: 1;
+}
+.reset
+{
+    border: 5px solid black;
+}
+.slab1
+{
+    top: 225px;
+    left: 30%;
+}
+
+.slab2
+{   
+    top: 225px;
+    left: 48.5%;   
+}
+.slab3
+{  
+    top: 225px;
+    left: 67%; 
+}
+.slab4
+{
+    top: 450px;
+    left: 30%;
+}
+.slab5
+{
+    top: 450px;
+    left: 48.5%;
+}
+.slab6
+{
+    top: 450px;
+    left: 67%;
+}
+.slab7
+{
+    top: 675px;
+    left: 30%;
+}
+.slab8
+{
+    top: 675px;
+    left: 48.5%;
+}
+.slab9
+{
+    top: 675px;
+    left: 67%;
+}
+.slab-info:hover
+{
+    /*border: 6px solid #660000;*/
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -o-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+    opacity: 1;
     /*-webkit-transition: 0.5s Ease;
     -moz-transition: 0.5s Ease;
     -o-transition: 0.5s Ease;
@@ -202,7 +202,7 @@ li
     font-family: arial;
     font-size: 22px;
     font-weight: normal;
-    color: steelblue;
+    color: gray;
 }
 .nound {
     text-decoration: none;
@@ -213,9 +213,18 @@ a {
     color: brown;
     
 }
+.refresh {
+    position: fixed;
+    top: 120px;
+    left: 100px;
+    font-size: 25px;
+    padding: 4px;
+    cursor: pointer;
+    color: gray;
+}
 .layout {
     /*position: fixed;*/
-   margin-top: 245px;
+    margin-top: 225px;
     margin-left: 95px;
 }
 .listprint
@@ -235,7 +244,7 @@ a {
     /*position: fixed;*/
     margin-top: 20px;
     margin-left: 120px;
-    padding: 1%;
+    padding: 0.6%;
     font-size: 25px;
     cursor: pointer;
 }
