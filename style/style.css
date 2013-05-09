@@ -44,6 +44,9 @@ img {border:0;}
     position: absolute;
 }
 
+.pointer {
+    cursor: pointer;
+}
 
 .price {
     position: absolute;
@@ -98,7 +101,7 @@ h5 {
     left: 93%;
     top: 7%;
     color: red;
-    cursor: pointer;
+    
     opacity: 0.5;
 }
 .test
@@ -219,7 +222,6 @@ a {
     left: 100px;
     font-size: 25px;
     padding: 4px;
-    cursor: pointer;
     color: gray;
 }
 .layout {
@@ -246,7 +248,6 @@ a {
     margin-left: 120px;
     padding: 0.6%;
     font-size: 25px;
-    cursor: pointer;
 }
 .more-info-button {
     width: 30px;
@@ -282,7 +283,6 @@ a {
     margin-left: 120px;
     padding: 1%;
     font-size: 25px;
-    cursor: pointer;
 }
 
 .footer
