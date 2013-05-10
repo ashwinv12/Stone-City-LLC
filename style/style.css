@@ -109,6 +109,10 @@ h5 {
     font-size: 40px;
     color: red;
 }
+#top {
+    position: absolute;
+    top: 0px;
+}
 .slabs {
     /*clear: both;*/
     border: 5px solid black;
@@ -118,10 +122,10 @@ h5 {
     position: absolute;
     /*margin-right: 75px;*/
     box-shadow: 2px 2px 5px #333333;
-    -webkit-transition: 0.5s Ease;
-    -moz-transition: 0.5s Ease;
-    -o-transition: 0.5s Ease;
-    transition: 0.5s Ease;
+    -webkit-transition: 0.7s Ease;
+    -moz-transition: 0.7s Ease;
+    -o-transition: 0.7s Ease;
+    transition: 0.7s Ease;
     -webkit-filter: grayscale(50%);
     /*padding: 10px;*/
 }
@@ -269,7 +273,7 @@ a {
     text-decoration: underline;
 }
 .printText {
-    
+
     font-weight: normal;
     color: black;  
 }
@@ -341,5 +345,5 @@ a {
 }
 a:hover .caption {
     display: block;
-    }​
+}​
 
