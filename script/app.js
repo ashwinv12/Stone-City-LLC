@@ -187,7 +187,7 @@ $(document).ready(function() {
 			// Click on list item: smoothscrolls to item image
 			$(listitem).appendTo('#slablist ul').click(function() {
 				
-				var id = '#'+name+'';
+				var id = '#'+name;
 				// An offset to push the content down from the top.
 				var offset = 20;
 
@@ -196,7 +196,8 @@ $(document).ready(function() {
         		var target = $(id).offset().top-offset;
 
         		// The magic...smooth scrollin' goodness.
-        		$('html, body').animate({scrollTop: target}, 1500);
+        		$('html, body').animate({scrollTop: target}, 700);
+        		return false;
     		});
 			
 		}
@@ -256,7 +257,7 @@ $(document).ready(function() {
         var target = $(id).offset().top-offset;
 
         // The magic...smooth scrollin' goodness.
-        $('html, body').animate({scrollTop: target}, 1500);
+        $('html, body').animate({scrollTop: target}, 700);
 		
 	});
 
