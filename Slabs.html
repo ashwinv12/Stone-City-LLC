@@ -2,185 +2,166 @@
 <html lang="en">
 
 
-<head>
-    <title>Stone City: Slabs</title>
-    <style type="text/css">
-    * {
-      margin: 0;
-      padding: 0;
-  }
-
-  html {
-      height: 100%;
-      /*overflow-y: scroll;*/
-      /*overflow: hidden;*/
-  }
-  body {
-     width: 100%;
-     margin: 0px; }
-     /*overflow: hidden; */
+    <head>
+        <title>Stone City: Slab Inventory</title>
+        <link rel="Stylesheet" href="style/style.css" type="text/css"/>
+    </head>
 
 
-     </style>
-     <link rel="Stylesheet" href="style/style.css" type="text/css"/>
- </head>
- <body>
+    <body>
 
+        <div>
+            <h5 class="help hide pointer" title="Help">?</h5>
+        </div>
+ 
+    
+        <div id="top"></div>
 
+        <h1 class="hide title abs">
+            Choices Available In Our Slabyard
+        </h1>
 
-    <div><h5 class="help hide pointer" title="Help">?</h5></div>
+        <div class="standard">
+            <h2>Sample Requests</h2>
+        </div> 
+
+        <div>
+            <a href="#top">
+                <h3 class="footer hide abs">STONE CITY LLC</h3>
+            </a>
+        </div>
 
     
+        <!-- List of requested slabs that contains start over, print, and email buttons -->
+        <div id="slablist" class="listprint ">
+            <button title="Clear the List" class="refresh pointer hide">Start Over</button>
+            <ul id="list" class="layout"></ul>
     
-    <div id="top"></div>
-
-    <h1 class="hide title abs">
-     Choices Available In Our Slabyard</h1>
-
-     <div class="standard">
-        <h2>Sample Requests</h2>
-    </div> 
-
-    <div>
-        <a href="#top"><h3 class="footer hide abs">STONE CITY LLC</h3></a>
+            <button title="Print the List" class="printMe button hide pointer">PRINT</button>
+            <a id="mailto" target="_blank">
+                <button title="Send Us the List" class="email button1 hide pointer">EMAIL</button>
+            </a>
         
-    </div>
+        </div>
 
+        <!-- 16-Moscerello -->
+        <div id="16-Moscerello" avail="In Stock" thickness="3 cm" price="$120.00" class="16-Moscerello slabs slab1 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">16-Moscerello</span>
+                <span align="left" class="info">16-Moscerello</span>
+            
+                <img class="slab" id="16-Moscerello" src="slabs/16-Moscerello.jpg" width="100%" height="100%"/>
+                <img class="more-info-button abs" src="style/button.png">
+            
+            </a>
+
+        </div>
+
+        <!-- Black-Pearl -->
+        <div id="Black-Pearl" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab2 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">Black-Pearl</span>
+                <span align="left" class="info">Black-Pearl</span>
+                
+                <img class="slab" id="Black-Pearl" src="slabs/Black-Pearl.jpg" width="100%" height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
+
+        </div>
     
-
-    <div id="slablist" class="listprint ">
-        <button title="Clear the List" class="refresh pointer hide">Start Over</button>
-        <ul id="list" class="layout"></ul>
-
-        <button title="Print the List" class="printMe button hide pointer">PRINT</button>
-        <a id="mailto" target="_blank"><button title="Send Us the List" class="email button1 hide pointer">EMAIL</button></a>
-        
-    </div>
-
-
-    <div id="16-Moscerello" avail="In Stock" thickness="3 cm" price="$120.00" class="16-Moscerello slabs slab1 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">16-Moscerello</span>
-            <span align="left" class="info">16-Moscerello</span>
+        <!-- Supreme-Fantasy -->
+        <div id="Supreme-Fantasy" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab3 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">Supreme-Fantasy</span>
+                <span align="left" class="info">Supreme-Fantasy</span>
             
-            <img class="slab" id="16-Moscerello" src="slabs/16-Moscerello.jpg" width="100%" height="100%"/>
-            <img title="More Info" class="more-info-button abs" src="style/button.png">
+                <img class="slab" id="Supreme-Fantasy" src="slabs/Supreme-Fantasy.jpg" width="100%" height=
+                "100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
+
+        </div>
+
+        <!-- Tan-Brown -->
+        <div id="Tan-Brown" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab4 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">Tan-Brown</span>
+                <span align="left" class="info">Tan-Brown</span>
             
-        </a>
+                <img class="slab" id="Tan-Brown" src="slabs/Tan-Brown.jpg" width="100%" height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
 
-    </div>
+        </div>
 
-
-    <div id="Black-Pearl" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab2 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">Black-Pearl</span>
-            <span align="left" class="info">Black-Pearl</span>
+        <!-- 41-Typhoon-Gold -->
+        <div id="41-Typhoon-Gold" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab5 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">41-Typhoon-Gold</span>
+                <span align="left" class="info">41-Typhoon-Gold</span>
             
-            <img class="slab" id="Black-Pearl" src="slabs/Black-Pearl.jpg" width="100%" height="100%"/>
+                <img class="slab" id="41-Typhoon-Gold" src="slabs/41-Typhoon-Gold.jpg" width="100%" height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
 
-
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-
-    <div id="Supreme-Fantasy" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab3 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">Supreme-Fantasy</span>
-            <span align="left" class="info">Supreme-Fantasy</span>
+        </div>
+    
+        <!-- 24-Delicatus -->
+        <div id="24-Delicatus" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab6 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">24-Delicatus</span>
+                <span align="left" class="info">24-Delicatus</span>
             
-            <img class="slab" id="Supreme-Fantasy" src="slabs/Supreme-Fantasy.jpg" width="100%" height=
-            "100%"/>
+                <img class="slab" id="24-Delicatus" src="slabs/24-Delicatus.jpg" width="100%" height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
 
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-
-    <div id="Tan-Brown" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab4 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">Tan-Brown</span>
-            <span align="left" class="info">Tan-Brown</span>
+        </div>
+    
+        <!-- 30-Bionco -->
+        <div id="30-Bionco" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab7 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">30-Bionco</span>
+                <span align="left" class="info">30-Bionco</span>
             
-            <img class="slab" id="Tan-Brown" src="slabs/Tan-Brown.jpg" width="100%" height="100%"/>
+                <img class="slab" id="30-Bionco" src="slabs/30-Bionco.jpg" width="100%" height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
 
-
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-
-    <div id="41-Typhoon-Gold" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab5 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">41-Typhoon-Gold</span>
-            <span align="left" class="info">41-Typhoon-Gold</span>
+        </div>
+    
+        <!-- 27-Colonial-Fantasy -->
+        <div id="27-Colonial-Fantasy" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab8 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">27-Colonial-Fantasy</span>
+                <span align="left" class="info">27-Colonial-Fantasy</span>
             
-            <img class="slab" id="41-Typhoon-Gold" src="slabs/41-Typhoon-Gold.jpg" width="100%" height=
-            "100%"/>
+                <img class="slab" id="27-Colonial-Fantasy" src="slabs/27-Colonial-Fantasy.jpg" width="100%" height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
 
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-
-    <div id="24-Delicatus" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab6 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">24-Delicatus</span>
-            <span align="left" class="info">24-Delicatus</span>
+        </div>
+    
+        <!-- New-Venetian-Gold -->
+        <div id="New-Venetian-Gold" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab9 slab-info hide">
+            <a href="">
+                <span align="left" class="caption">New-Venetian-Gold</span>
+                <span align="left" class="info">New-Venetian-Gold</span>
             
-            <img class="slab" id="24-Delicatus" src="slabs/24-Delicatus.jpg" width="100%" height="100%"
-            />
+                <img class="slab" id="New-Venetian-Gold" src="slabs/New-Venetian-Gold.jpeg" width="100%" 
+                height="100%"/>
+                <img title="More Info" class="more-info-button" src="style/button.png">
+            </a>
 
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
+        </div>
 
-    </div>
+        <!-- Javascript files -->
+        <script src="script/jquery.js"></script>
+        <script src="script/app.js"></script>
+        <script src="script/title.js"></script>
+        <script type='text/javascript' src='script/jquery.simplemodal.js'></script>
 
-    <div id="30-Bionco" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab7 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">30-Bionco</span>
-            <span align="left" class="info">30-Bionco</span>
-            
-            <img class="slab" id="30-Bionco" src="slabs/30-Bionco.jpg" width="100%" height="100%"/>
-
-
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-
-    <div id="27-Colonial-Fantasy" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab8 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">27-Colonial-Fantasy</span>
-            <span align="left" class="info">27-Colonial-Fantasy</span>
-            
-            <img class="slab" id="27-Colonial-Fantasy" src="slabs/27-Colonial-Fantasy.jpg" width="100%"
-            height="100%"/>
-
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-
-    <div id="New-Venetian-Gold" avail="In Stock" thickness="3 cm" price="$120.00" class="slabs slab9 slab-info hide">
-        <a href="">
-            <span align="left" class="caption">New-Venetian-Gold</span>
-            <span align="left" class="info">New-Venetian-Gold</span>
-            
-            <img class="slab" id="New-Venetian-Gold" src="slabs/New-Venetian-Gold.jpeg" width="100%" 
-            height="100%"/>
-
-            <img title="More Info" class="more-info-button" src="style/button.png">
-        </a>
-
-    </div>
-    <script src="script/jquery.js"></script>
-    <script src="script/app.js"></script>
-    <script src="script/title.js"></script>
-    <script type='text/javascript' src='script/jquery.simplemodal.js'></script>
-    <script type='text/javascript' src='script/basic.js'></script>
-
-</body>
+    </body>
 
 
 </html>

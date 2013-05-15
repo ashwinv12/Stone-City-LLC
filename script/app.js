@@ -1,50 +1,51 @@
 $(document).ready(function() {
 
-	
+	// length of the list
+	var length = $('#slablist ul').length;
 
+
+	// Hides More Info button and gives it the correct opacity
 	$('.more-info-button').hide();
 	$('.more-info-button').addClass('opacity8');
 
-	var inlist = inlist;
-	var inlist2 = inlist2;
-	var numclicks = 0;
-	var moreinfo = false;
-	var length = $('#slablist ul').length;
-
+	// Hides print, email, and start-over buttons, as well as slab name
 	$('.printMe').hide();
 	$('.email').hide();
 	$('.info').hide();	
 	$('.refresh').hide();
 
-	// Hover over slab
+	// Hover over slab: displays the More Info button
 	$('.slabs').mouseenter(function() {
 		$(this).find('.more-info-button').show();
 	});
 
-	// Unhover from slab
+	// Unhover from slab: More Info button dissapears
 	$('.slabs').mouseleave(function() {
 		$(this).find('.more-info-button').hide();
 	});
 
-	// Hover over info button
+	// Hover over info button: increases opacity on button, adds customized tool tip
 	$('.more-info-button').mouseenter(function() {
+		var $slab = $(this).parents('.slabs').first();
+		var name = $slab.attr("id");
 		$(this).removeClass('opacity8');
 		$(this).addClass('fullopacity');
+		$(this).attr('title', 'More Info on '+ name +'')
 	});
 
-	// Unhover from info button
+	// Unhover from info button: opacity back to normal, and tool tip dissapears
 	$('.more-info-button').mouseleave(function() {
 		$(this).removeClass('fullopacity');
 		$(this).addClass('opacity8');
 	});
 
-	// Hover over help button
+	// Hover over help button: opacity increases from 0.5 to 0.8
 	$('.help').mouseenter(function() {
 		$(this).removeClass('opacity5');
 		$(this).addClass('opacity8');
 	});
 
-	// Unhover from help button
+	// Unhover from help button: opacity goes back to 0.5 from 0.8
 	$('.help').mouseleave(function() {
 		$(this).removeClass('opacity8');
 		$(this).addClass('opacity5');
@@ -72,7 +73,7 @@ $(document).ready(function() {
 		$.modal('<div><h4 align="center">' + name + '</h4><p class="price">Price: ' + price + '</p>'
 			+'<img class="modalImage" title="Add or Remove from List" src=' + image + '><p class="thickness">'
 			+ 'Thickness: '+thickness+'<p class="avail">Availability: '+avail+'</p> ' 
-			+ '<p class="listhelp">Click on image to add or <br>remove from the list.</p>	</div>');
+			+ '<p class="listhelp">Click on image to add or <br>remove from the list.</p></div>');
 
 		// Click on modal image: adds or removes it from list
 		$('.modalImage').click(function(e) {
@@ -83,13 +84,13 @@ $(document).ready(function() {
 			$slab.removeClass('red');
 			$slab.find(('.info')).hide();
 
-			// Adding or removing list item from list
+			// Removing list item from list
 			$('ul#list li').each(function() {
-				if ($(this).hasClass(that.attr("id"))) {
+				var $this = $(this);
+				if ($this.hasClass(that.attr("id"))) {
 				
-					$(this).remove();
+					$this.remove();
 					removed = true;
-					
 
 					length--;
 				
@@ -115,7 +116,7 @@ $(document).ready(function() {
 				$slab.removeClass('reset');
 				$slab.find(('.info')).show();
 				
-				
+				// variable that stores the list item with an id to scroll to
 				var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 				
 				// Click on list item: smoothscrolls to item image
@@ -137,12 +138,11 @@ $(document).ready(function() {
 		
 		});
 	});
-
-
+	
+	
 	// Click on regular slab image: adds or removes it from list
 	$('.slabs img.slab').click(function(e) {
 		e.preventDefault();
-		inlist = !inlist;
 		var name = this.id;
 		var that = this;
 		var removed = false;
@@ -181,6 +181,7 @@ $(document).ready(function() {
 			$(parent).removeClass('reset');
 			$(parent).find(('.info')).show();
 						
+			// variable that stores the list item with an id to scroll to						
 			var listitem = '<li title="Go To '+name+'" class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 			
 			// Click on list item: smoothscrolls to item image
@@ -201,18 +202,20 @@ $(document).ready(function() {
 		}
 	});
 
-	// Click on print button: only shows list for printing
+	// Click on print button: allows user to print out their list
 	$('.printMe').click(function() {
-		numclicks++;
 
+		// Hides all buttons and images for printing
 		$('.hide').hide();
 		$('a').removeClass('linkwebText');
 		$('standard').removeClass('webText');
 		$('a').addClass('linkprintText');
 		$('.standard').addClass('printText');
-							
+		
+		// Prints what is visible on the window			
 		window.print();
 
+		// Shows everything on page after printing or if printing is cancelled
 		$('a').removeClass('linkprintText');
 		$('standard').removeClass('printText');
 		$('a').addClass('linkwebText');
@@ -224,20 +227,39 @@ $(document).ready(function() {
 
 	// Click on email button: opens mailto link in new tab
 	$('.email').click(function() {	
+		// stores list items into an array split by commas for email
 		var listItems = [];
 		$("ul li").each(function() { listItems.push($(this).text()) });
 		var sampleRequests = listItems.join(', ');
+
+		// mailto address and contents
 		$('#mailto').attr('href', 'mailto:babu@stonecityllc.com?subject=Slab Requests&body=' +sampleRequests + '');
 		
 	});
 
-	// Click on start over button: refreshes page
+	// Click on start over button: clears  out list
 	$('.refresh').click(function() {
-		location.reload();
+		$(this).hide();
+		$('.printMe').hide();
+		$('.email').hide();
+		$('#slablist ul').empty();
+		$('.slabs').removeClass('red');
+		$('.slabs').addClass('reset');
+		$('.info').hide();
+
+		var id = '#top';
+		// An offset to push the content down from the top.
+		var offset = 20;
+
+    	// Our scroll target : the top position of the
+        // section that has the id referenced by our href.
+        var target = $(id).offset().top-offset;
+
+        // The magic...smooth scrollin' goodness.
+        $('html, body').animate({scrollTop: target}, 1500);
+		
 	});
 
-
-
-
+	
 
 });

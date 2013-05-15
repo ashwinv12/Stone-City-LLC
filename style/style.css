@@ -1,3 +1,20 @@
+ * {
+    margin: 0;
+    padding: 0;
+} 
+
+html {
+    height: 100%;
+    /*overflow-y: scroll;*/
+    /*overflow: hidden;*/
+}
+
+body {
+    width: 100%;
+    margin: 0px; }
+    /*overflow: hidden; */
+}
+
 body
 {
     /*background-color: #E5E5E5;*/
@@ -8,13 +25,32 @@ body
     /*text-shadow: 1px 1px 0px black;*/
 
 }
-h4 {color:#3a6d8c; font-size:22px; line-height:26px; font-weight:normal; margin:0 0 8px 0;}
-img {border:0;}
-#logo {margin-bottom:20px; width:300px;}
-#logo h4 {color:#666; letter-spacing:-1px; font-weight:normal;}
-#logo h4 span {color:#444; font-weight:bold;}
-#logo .title {color:#999; font-size:12px;}
-#container {margin:0 auto; padding-top:20px; width:800px;}
+h4 {
+    color: #3a6d8c; 
+    font-size: 22px; 
+    line-height: 26px; 
+    font-weight: normal; 
+    margin: 0 0 8px 0;
+}
+img {
+    border: 0;
+}
+
+#logo {
+    margin-bottom: 20px; 
+    width: 300px;
+}
+#logo h4 {
+    color: #666; 
+    letter-spacing: -1px; 
+    font-weight: normal;
+}
+#logo h4 span {
+    color: #444; 
+    font-weight: bold;
+}
+#logo .title {color: #999; font-size:12px;}
+#container {margin: 0 auto; padding-top:20px; width:800px;}
 #content {border-bottom:1px dotted #999; border-top:1px dotted #999; padding:20px 0;}
 #footer {clear:left; color:#888; margin:20px 0;}
 #footer a:link, #footer a:visited {color:#888; text-decoration:none;}
@@ -81,10 +117,12 @@ h1
     left: 33%;
     top: 20%;
     color: steelblue;
+    font-family: Verdana;
 }
 h2 
 {
     font-size: 20px;
+    font-family: Verdana;
 }
 h3 {
     clear: both;
@@ -101,7 +139,7 @@ h5 {
     left: 93%;
     top: 7%;
     color: red;
-    
+    font-family: Verdana;
     opacity: 0.5;
 }
 .test
@@ -345,5 +383,5 @@ a {
 }
 a:hover .caption {
     display: block;
-}​
+    }​
 
