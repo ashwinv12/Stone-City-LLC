@@ -81,7 +81,7 @@ $(document).ready(function() {
 			var removed = false;
 
 			$slab.addClass('reset');
-			$slab.removeClass('red');
+			$slab.removeClass('highlight');
 			$slab.find(('.info')).hide();
 
 			// Removing list item from list
@@ -112,7 +112,7 @@ $(document).ready(function() {
 					$('.refresh').show();
 				}
 
-				$slab.addClass('red');
+				$slab.addClass('highlight');
 				$slab.removeClass('reset');
 				$slab.find(('.info')).show();
 				
@@ -148,7 +148,7 @@ $(document).ready(function() {
 		var removed = false;
 		var parent = $(this).closest("div");
 		$(parent).addClass('reset');
-		$(parent).removeClass('red');
+		$(parent).removeClass('highlight');
 		$(parent).find(('.info')).hide();
 
 		// Adding or removing list item from list
@@ -177,7 +177,7 @@ $(document).ready(function() {
 				$('.refresh').show();
 			}
 
-			$(parent).addClass('red');
+			$(parent).addClass('highlight');
 			$(parent).removeClass('reset');
 			$(parent).find(('.info')).show();
 						
@@ -244,7 +244,7 @@ $(document).ready(function() {
 		$('.printMe').hide();
 		$('.email').hide();
 		$('#slablist ul').empty();
-		$('.slabs').removeClass('red');
+		$('.slabs').removeClass('highlight');
 		$('.slabs').addClass('reset');
 		$('.info').hide();
 
