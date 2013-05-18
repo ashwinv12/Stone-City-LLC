@@ -3,6 +3,22 @@ $(document).ready(function() {
 	// length of the list
 	var length = $('#slablist ul').length;
 
+	// function smoothScroll - takes in id, offset, and speed, and can be called inside of click function
+	function smoothScroll(id, offset, speed) {
+		var scrollId = id;
+		// An offset to push the content down from the top.
+		var scrollOffset = offset;
+    	// Our scroll target : the top position of the
+    	// section that has the id referenced by our href.
+        var target = $(scrollId).offset().top-scrollOffset;
+
+		// The magic...smooth scrollin' goodness.
+    	$('html, body').animate({scrollTop: target}, speed);
+
+    	
+	}
+
+	
 
 	hideListButtons();
 
@@ -26,6 +42,7 @@ $(document).ready(function() {
 	$('.more-info-button').hide();
 	$('.more-info-button').addClass('opacity8');
 
+
 	// function hideListButtons - hides print, email, and start-over buttons
 	function hideListButtons() {
 		$('.printMe').hide();
@@ -41,25 +58,10 @@ $(document).ready(function() {
 	}
 
 
-	function removeSlab(thisSlab, thatSlab) {
-		var that = thatSlab;
-		var $this = thisSlab;
-
-		
-
-		if ($this.hasClass(that.attr("id"))) {	
-			$this.remove();
-			length--;
-
-			if (length==1) {
-				hideListButtons();
-			}	
-		}
-				
-
-	}
+	
 
 	$('.info').hide();
+
 
 
 	// Hover over slab: displays the More Info button
@@ -134,8 +136,21 @@ $(document).ready(function() {
 
 			// Removing list item from list
 			$('ul#list li').each(function() {
-				removed = true
-				removeSlab($(this), that);
+
+				var $this = $(this);
+				if ($this.hasClass(that.attr("id"))) {
+				
+					$this.remove();
+					removed = true;
+
+					length--;
+				
+					if (length==1) {
+						hideListButtons();
+					}	
+				}
+
+
 			});
 
 			
@@ -145,6 +160,7 @@ $(document).ready(function() {
 
 				if (length>1) {
 					showListButtons();
+
 				}
 
 				$slab.addClass('highlight');
@@ -186,11 +202,13 @@ $(document).ready(function() {
 					$this.remove();
 					removed = true;
 
+
 					length--;
 				
 					if (length==1) {
 						hideListButtons();
 					}	
+
 				}
 
 
@@ -200,7 +218,9 @@ $(document).ready(function() {
 			length++;
 			
 			if (length>1) {
+
 				showListButtons();
+
 			}
 
 			$(parent).addClass('highlight');
@@ -256,7 +276,9 @@ $(document).ready(function() {
 
 	// Click on start over button: clears  out list
 	$('.startover').click(function() {
+
 		hideListButtons();
+
 		$('#slablist ul').empty();
 		$('.slabs').removeClass('highlight');
 		$('.slabs').addClass('reset');
