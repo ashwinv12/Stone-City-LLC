@@ -4,15 +4,63 @@ $(document).ready(function() {
 	var length = $('#slablist ul').length;
 
 
+	hideListButtons();
+
+	// function smoothScroll - takes in id, offset, and speed, and can be called inside of click function
+	function smoothScroll(id, offset, speed) {
+		var scrollId = id;
+		// An offset to push the content down from the top.
+		var scrollOffset = offset;
+    	// Our scroll target : the top position of the
+    	// section that has the id referenced by our href.
+        var target = $(scrollId).offset().top-scrollOffset;
+
+		// The magic...smooth scrollin' goodness.
+    	$('html, body').animate({scrollTop: target}, speed);
+
+	}
+
+	
+
 	// Hides More Info button and gives it the correct opacity
 	$('.more-info-button').hide();
 	$('.more-info-button').addClass('opacity8');
 
-	// Hides print, email, and start-over buttons, as well as slab name
-	$('.printMe').hide();
-	$('.email').hide();
-	$('.info').hide();	
-	$('.refresh').hide();
+	// function hideListButtons - hides print, email, and start-over buttons
+	function hideListButtons() {
+		$('.printMe').hide();
+		$('.email').hide();
+		$('.startover').hide();
+	}
+	
+	// function showListButtons - shows print, email, and start-over buttons
+	function showListButtons() {
+		$('.printMe').show();
+		$('.email').show();
+		$('.startover').show();
+	}
+
+
+	function removeSlab(thisSlab, thatSlab) {
+		var that = thatSlab;
+		var $this = thisSlab;
+
+		
+
+		if ($this.hasClass(that.attr("id"))) {	
+			$this.remove();
+			length--;
+
+			if (length==1) {
+				hideListButtons();
+			}	
+		}
+				
+
+	}
+
+	$('.info').hide();
+
 
 	// Hover over slab: displays the More Info button
 	$('.slabs').mouseenter(function() {
@@ -86,30 +134,17 @@ $(document).ready(function() {
 
 			// Removing list item from list
 			$('ul#list li').each(function() {
-				var $this = $(this);
-				if ($this.hasClass(that.attr("id"))) {
-				
-					$this.remove();
-					removed = true;
-
-					length--;
-				
-					if (length==1) {
-						$('.printMe').hide();
-						$('.email').hide();
-						$('.refresh').hide();
-					}	
-				}
-
+				removed = true
+				removeSlab($(this), that);
 			});
+
+			
 
 			if (!removed) {
 				length++;
 
 				if (length>1) {
-					$('.printMe').show();
-					$('.email').show();
-					$('.refresh').show();
+					showListButtons();
 				}
 
 				$slab.addClass('highlight');
@@ -121,17 +156,8 @@ $(document).ready(function() {
 				
 				// Click on list item: smoothscrolls to item image
 				$(listitem).appendTo('#slablist ul').click(function() {
-					var id = '#'+name+'';
-					// An offset to push the content down from the top.
-					var offset = 20;
-
-	        		// Our scroll target : the top position of the
-    	    		// section that has the id referenced by our href.
-        			var target = $(id).offset().top-offset;
-
-        			// The magic...smooth scrollin' goodness.
-        			$('html, body').animate({scrollTop: target}, 1500);
-
+        			smoothScroll('#'+name, 20, 700);
+        			return false;
     			});
 			
 			}
@@ -144,7 +170,7 @@ $(document).ready(function() {
 	$('.slabs img.slab').click(function(e) {
 		e.preventDefault();
 		var name = this.id;
-		var that = this;
+		var that = $(this).parents('.slabs').first();;
 		var removed = false;
 		var parent = $(this).closest("div");
 		$(parent).addClass('reset');
@@ -154,17 +180,19 @@ $(document).ready(function() {
 		// Adding or removing list item from list
 		$('ul#list li').each(function() {
 
-			if ($(this).hasClass(that.id)) {
-				$(this).remove();
-				removed = true;
-				length--;
+			var $this = $(this);
+				if ($this.hasClass(that.attr("id"))) {
+				
+					$this.remove();
+					removed = true;
 
-				if (length==1) {
-					$('.printMe').hide();
-					$('.email').hide();
-					$('.refresh').hide();
+					length--;
+				
+					if (length==1) {
+						hideListButtons();
+					}	
 				}
-			}
+
 
 		});
 
@@ -172,9 +200,7 @@ $(document).ready(function() {
 			length++;
 			
 			if (length>1) {
-				$('.printMe').show();
-				$('.email').show();
-				$('.refresh').show();
+				showListButtons();
 			}
 
 			$(parent).addClass('highlight');
@@ -186,17 +212,7 @@ $(document).ready(function() {
 			
 			// Click on list item: smoothscrolls to item image
 			$(listitem).appendTo('#slablist ul').click(function() {
-				
-				var id = '#'+name;
-				// An offset to push the content down from the top.
-				var offset = 20;
-
-        		// Our scroll target : the top position of the
-        		// section that has the id referenced by our href.
-        		var target = $(id).offset().top-offset;
-
-        		// The magic...smooth scrollin' goodness.
-        		$('html, body').animate({scrollTop: target}, 700);
+        		smoothScroll('#'+name, 20, 700);
         		return false;
     		});
 			
@@ -239,25 +255,15 @@ $(document).ready(function() {
 	});
 
 	// Click on start over button: clears  out list
-	$('.refresh').click(function() {
-		$(this).hide();
-		$('.printMe').hide();
-		$('.email').hide();
+	$('.startover').click(function() {
+		hideListButtons();
 		$('#slablist ul').empty();
 		$('.slabs').removeClass('highlight');
 		$('.slabs').addClass('reset');
 		$('.info').hide();
 
-		var id = '#top';
-		// An offset to push the content down from the top.
-		var offset = 20;
-
-    	// Our scroll target : the top position of the
-        // section that has the id referenced by our href.
-        var target = $(id).offset().top-offset;
-
-        // The magic...smooth scrollin' goodness.
-        $('html, body').animate({scrollTop: target}, 700);
+		smoothScroll('#top', 20, 700);
+        return false;
 		
 	});
 
