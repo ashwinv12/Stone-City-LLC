@@ -1,71 +1,82 @@
 $(document).ready(function() {
 
-	hideListButtons();
-	$('.info').hide();
+	
 
+	// slab name is hidden
+	$('.name').hide();
+
+	// Hides More Info button and gives it the correct opacity
+	$('.more-info-button').hide();
+	$('.more-info-button').addClass('opacity8');
 
 	// length of the list
 	var length = $('#slablist ul').length;
 
 	
 	// function smoothScroll - takes in id, offset, and speed, and can be called inside of click function
-	function smoothScroll(id, offset, speed) {
-		
-    	// Our scroll target : the top position of the
-    	// section that has the id referenced by our href.
+	var smoothScroll = function(id, offset, speed) {
+    	// Our scroll target - the top position of the section that has the id referenced by our href.
         var target = $(id).offset().top-offset;
-
 		// The magic...smooth scrollin' goodness.
     	$('html, body').animate({scrollTop: target}, speed);
 
-	}
-
-	
-
-	// Hides More Info button and gives it the correct opacity
-	$('.more-info-button').hide();
-	$('.more-info-button').addClass('opacity8');
-
+	};
 
 	// function hideListButtons - hides print, email, and start-over buttons
-	function hideListButtons() {
+	var hideListButtons = function()  {
 		$('.printMe').hide();
 		$('.email').hide();
 		$('.startover').hide();
-	}
+	};
 	
 	// function showListButtons - shows print, email, and start-over buttons
-	function showListButtons() {
+	var showListButtons = function () {
 		$('.printMe').show();
 		$('.email').show();
 		$('.startover').show();
 	}
 
 	// function resetSlab - takes in a slab div to remove the highlight
-	function resetSlab(slab) {
+	var resetSlab = function (slab) {
 		slab.addClass('reset');
 		slab.removeClass('highlight');
-		slab.find(('.info')).hide();
+		slab.find(('.name')).hide();
 	}
 
-	function highlightSlab(slab) {
+	// function highlightSlab - gives a slab a colored border when added to list
+	var highlightSlab = function (slab) {
 		slab.addClass('highlight');
 		slab.removeClass('reset');
-		slab.find(('.info')).show();
+		slab.find(('.name')).show();
 	}
 
+	// function initListButtons - based on the length of list, either shows or hides list buttons
+	var initListButtons = function (length) {
+		if (length>1) {
+			showListButtons();
+		}
+		if (length==1) {
+			hideListButtons();
+		}
+	}
 
-	// Hover over slab: displays the More Info button
+	// List buttons are hidden, as list is empty to start
+	hideListButtons();
+
+
+	// Hover over slab - displays the More Info button
 	$('.slabs').mouseenter(function() {
 		$(this).find('.more-info-button').show();
+		$(this).find('.caption').show();
 	});
 
-	// Unhover from slab: More Info button dissapears
+	// Unhover from slab - More Info button dissapears
 	$('.slabs').mouseleave(function() {
 		$(this).find('.more-info-button').hide();
+		$(this).find('.caption').hide();
 	});
 
-	// Hover over info button: increases opacity on button, adds customized tool tip
+	// Hover over info button - increases opacity on button, adds customized tool tip
 	$('.more-info-button').mouseenter(function() {
 		var $slab = $(this).parents('.slabs').first();
 		var name = $slab.attr("id");
@@ -75,36 +86,38 @@ $(document).ready(function() {
 		$this.attr('title', 'More Info on '+ name +'')
 	});
 
-	// Unhover from info button: opacity back to normal, and tool tip dissapears
+	// Unhover from info button - opacity back to normal, and tool tip dissapears
 	$('.more-info-button').mouseleave(function() {
 		var $this = $(this);
 		$this.removeClass('fullopacity');
 		$this.addClass('opacity8');
 	});
 
-	// Hover over help button: opacity increases from 0.5 to 0.8
+	// Hover over help button - opacity increases from 0.5 to 0.8
 	$('.help').mouseenter(function() {
 		var $this = $(this);
 		$this.removeClass('opacity5');
 		$this.addClass('opacity8');
 	});
 
-	// Unhover from help button: opacity goes back to 0.5 from 0.8
+	// Unhover from help button - opacity goes back to 0.5 from 0.8
 	$('.help').mouseleave(function() {
 		var $this = $(this);
 		$this.removeClass('opacity8');
 		$this.addClass('opacity5');
 	});
 
-	// Click on help button: displays modal with help contents
+	// Click on help button - displays modal with help contents
 	$('.help').click(function() {
 		$.modal('<div><h4 align="center">Help</h4><br><p align="left">Click on the "i" icon for information '
 			+ 'on the slab</p><br><p>Click on slab image to add it to your slab request list</p><br>'
 			+ '<p>Click on the list item to navigate to the slab image</p><br><p>When you are finished, you'
 			+ ' can print or email your list</p></div>');
+
+
 	});
 
-	// Click on info button: displays modal with slab's info
+	// Click on info button - displays modal with slab's info
 	$('.more-info-button').click(function(e) {
 		e.preventDefault();
 		var $slab = $(this).parents('.slabs').first();
@@ -120,14 +133,15 @@ $(document).ready(function() {
 			+ 'Thickness: '+thickness+'<p class="avail">Availability: '+avail+'</p> ' 
 			+ '<p class="listhelp">Click on image to add or <br>remove from the list.</p></div>');
 
-		// Click on modal image: adds or removes it from list
+
+
+		// Click on modal image - adds or removes it from list
 		$('.modalImage').click(function(e) {
 			var that = $slab;
 			var removed = false;
 
 			resetSlab($slab);
 			
-
 			// Removing list item from list
 			$('ul#list li').each(function() {
 
@@ -139,9 +153,8 @@ $(document).ready(function() {
 
 					length--;
 				
-					if (length==1) {
-						hideListButtons();
-					}	
+					initListButtons(length);
+					
 				}
 
 
@@ -152,17 +165,14 @@ $(document).ready(function() {
 			if (!removed) {
 				length++;
 
-				if (length>1) {
-					showListButtons();
-
-				}
+				initListButtons(length);
 
 				highlightSlab($slab);
 				
 				// variable that stores the list item with an id to scroll to
 				var listitem = '<li class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 				
-				// Click on list item: smoothscrolls to item image
+				// Click on list item - smoothscrolls to item image
 				$(listitem).appendTo('#slablist ul').click(function() {
         			smoothScroll('#'+name, 20, 700);
         			return false;
@@ -174,7 +184,7 @@ $(document).ready(function() {
 	});
 	
 	
-	// Click on regular slab image: adds or removes it from list
+	// Click on regular slab image - adds or removes it from list
 	$('.slabs img.slab').click(function(e) {
 		e.preventDefault();
 		var name = this.id;
@@ -192,13 +202,11 @@ $(document).ready(function() {
 				
 					$this.remove();
 					removed = true;
-
-
+					
+					
 					length--;
 				
-					if (length==1) {
-						hideListButtons();
-					}	
+					initListButtons(length);	
 
 				}
 
@@ -208,16 +216,14 @@ $(document).ready(function() {
 		if (!removed) {
 			length++;
 			
-			if (length>1) {
-				showListButtons();
-			}
+			initListButtons(length);
 
 			highlightSlab(parent);
-						
+									
 			// variable that stores the list item with an id to scroll to						
 			var listitem = '<li title="Go To '+name+'" class="'+name+'"><a href="#'+name+'">' + name + '</a></li>';
 			
-			// Click on list item: smoothscrolls to item image
+			// Click on list item - smoothscrolls to item image
 			$(listitem).appendTo('#slablist ul').click(function() {
         		smoothScroll('#'+name, 20, 700);
         		return false;
@@ -226,7 +232,7 @@ $(document).ready(function() {
 		}
 	});
 
-	// Click on print button: allows user to print out their list
+	// Click on print button - allows user to print out their list
 	$('.printMe').click(function() {
 
 		// Hides all buttons and images for printing
@@ -249,7 +255,7 @@ $(document).ready(function() {
 		return false; 
 	});
 
-	// Click on email button: opens mailto link in new tab
+	// Click on email button - opens mailto link in new tab
 	$('.email').click(function() {	
 		// stores list items into an array split by commas for email
 		var listItems = [];
@@ -263,7 +269,7 @@ $(document).ready(function() {
 		
 	});
 
-	// Click on start over button: clears  out list
+	// Click on start over button - clears  out list
 	$('.startover').click(function() {
 
 		hideListButtons();
@@ -271,9 +277,10 @@ $(document).ready(function() {
 		$('#slablist ul').empty();
 		$('.slabs').removeClass('highlight');
 		$('.slabs').addClass('reset');
-		$('.info').hide();
+		$('.name').hide();
 
 		smoothScroll('#top', 20, 700);
+
         return false;
 		
 	});
