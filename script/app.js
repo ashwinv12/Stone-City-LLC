@@ -30,28 +30,28 @@ $(document).ready(function() {
 	};
 	
 	// function showListButtons - shows print, email, and start-over buttons
-	var showListButtons = function () {
+	var showListButtons = function() {
 		$('.printMe').show();
 		$('.email').show();
 		$('.startover').show();
 	}
 
 	// function resetSlab - takes in a slab div to remove the highlight
-	var resetSlab = function (slab) {
+	var resetSlab = function(slab) {
 		slab.addClass('reset');
 		slab.removeClass('highlight');
 		slab.find(('.name')).hide();
 	}
 
 	// function highlightSlab - gives a slab a colored border when added to list
-	var highlightSlab = function (slab) {
+	var highlightSlab = function(slab) {
 		slab.addClass('highlight');
 		slab.removeClass('reset');
 		slab.find(('.name')).show();
 	}
 
 	// function initListButtons - based on the length of list, either shows or hides list buttons
-	var initListButtons = function (length) {
+	var initListButtons = function(length) {
 		if (length>1) {
 			showListButtons();
 		}
@@ -134,7 +134,6 @@ $(document).ready(function() {
 			+ '<p class="listhelp">Click on image to add or <br>remove from the list.</p></div>');
 
 
-
 		// Click on modal image - adds or removes it from list
 		$('.modalImage').click(function(e) {
 			var that = $slab;
@@ -144,29 +143,22 @@ $(document).ready(function() {
 			
 			// Removing list item from list
 			$('ul#list li').each(function() {
-
 				var $this = $(this);
+
 				if ($this.hasClass(that.attr("id"))) {
-				
+
 					$this.remove();
 					removed = true;
 
 					length--;
-				
-					initListButtons(length);
-					
+					initListButtons(length);				
 				}
-
 
 			});
 
-			
-
 			if (!removed) {
 				length++;
-
 				initListButtons(length);
-
 				highlightSlab($slab);
 				
 				// variable that stores the list item with an id to scroll to
@@ -202,10 +194,8 @@ $(document).ready(function() {
 				
 					$this.remove();
 					removed = true;
-					
-					
+
 					length--;
-				
 					initListButtons(length);	
 
 				}
@@ -215,9 +205,7 @@ $(document).ready(function() {
 
 		if (!removed) {
 			length++;
-			
 			initListButtons(length);
-
 			highlightSlab(parent);
 									
 			// variable that stores the list item with an id to scroll to						
@@ -271,7 +259,6 @@ $(document).ready(function() {
 
 	// Click on start over button - clears  out list
 	$('.startover').click(function() {
-
 		hideListButtons();
 
 		$('#slablist ul').empty();
